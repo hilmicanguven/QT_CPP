@@ -8,6 +8,7 @@
 
 #include <QScopedPointer>
 
+#include <iostream>
 
 //Setting in the constuctor
 Animal* getAnimal(QObject* parent)
@@ -122,12 +123,55 @@ int main(int argc, char *argv[])
 //    AnimalScoped();
 
 //    qInfo() << "Shared Pointers ...";
-    AnimalShared(new Animal());
+    // AnimalShared(new Animal());
+
+//------QString object creating-------
+    QString line("This is a string ");
+    qInfo() << line;
+
+    QString name = "Hilmi Guven";
+    qInfo() << name;
+
+    int progress = 100;
+    int total = 200;
+    QString bar = QString("Progress Bar: %1/%2").arg(progress).arg(total);
+    qInfo() << bar;
+//------QString object creating-------
+
+//------QString Reading Each Char-------
+    for(int i=0; i < name.length(); i++)
+    {
+        QChar character = name.at(i);
+        qInfo() << character;
+    }
+//------QString Reading Each Char-------
+
+//------Comparing & Searching-------
+    qInfo() << "Comparison Result" << name.compare("Name Surname", Qt::CaseSensitivity::CaseSensitive);
+    qInfo() << "is String start with ...?"  << name.startsWith("Hilmi", Qt::CaseSensitivity::CaseSensitive);
+    qInfo() << "is String end with ...?"  << name.endsWith("Guven", Qt::CaseSensitivity::CaseSensitive);
+    qInfo() << "is String contains ...?"  << name.contains("mi Gu");
+    qInfo() << "index of string ...?"  << name.indexOf("Guven");
+//------Comparing & Searching-------
+
+//------Modify & Parsing-------
+
+//------Modify & Parsing-------
+
+//------Conversion------
+    std::cout << "std-> " << name.toStdString() << std::endl;
+
+    qInfo() << "UTF8 " << name.toUtf8();
+    qInfo() << "Base64 " << name.toUtf8().toBase64();
+    qInfo() << "Hex " << name.toUtf8().toHex();
 
     int value = a.exec();
     qInfo() << "Exit Code: " << value;
 
-
+/** @note QString is not QObject!!!
+ *  We can not copy QObject during passing function as argument
+ *  bu we can copy QStrings can be copied
+*/
 
 
 

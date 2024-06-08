@@ -1,4 +1,4 @@
-----------
+----------project_001 ----------
 
 - Parent - Child ilişkisi
 
@@ -28,4 +28,10 @@ Oluşturulduğu Scope içinde kullanılan, scope dışına çıkıldığında si
 
 QSharedPoiner
 Class'lar arası referans verilebilen, ana program bitmeden silinmeyen pointer çeşididir.
----------------
+
+QString: Bildiğimiz string yapısı, yalnızca Qt özelinde kullanılan fonksiyonlar mevcut.
+Proje içerisinde çeşitli kullanım ve örnekleri mevcut. Buna ek olarak bir sınıf daha var
+
+QStringView: QString yapısı içinde bir fazla QChar içeren ve üzerinde değişiklik yapabileceğimiz şekilde bir yapısı vardı. QStringView ise string'i bir bütün halinde düşünüp
+üzerinde değişiklik yapılamıyor. Yani bir fonksiyona string değişkenimizi parametre olarak verdiğimizde (adresini) o fonksiyon içerisinde bu değişken artık değiştirilebilir! bu büyük bir problemdir. Bu nedenle fonksiyonun aldığı parameteryi QStringView olarak tanımlamak buna çözüm olabilir.
+----------project_001 ----------
