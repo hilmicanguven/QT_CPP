@@ -1,0 +1,31 @@
+----------
+
+- Parent - Child ilişkisi
+
+QT, QObjects objelerini "Device Tree" şeklinde organize ediyor. Bir QObject, farklı bir
+QObject nesnesinin parent'i olarak oluşturulabilir. Bu durumda parent-child ilişkisi
+kurulur. Eğer Parent QObject silinirse, bağlı olduğu tüm QObjects Child nesneleri de silinir. Buna, QT Dynamic Memory Management adı verilir.
+
+project_001 içerisinde, Animal class'ı oluşturup, Ana uygulama olan QCoreApplication'ı bunun 
+parent'i olarak set ettik. Ana program tamamlandığında artık bu Animal class'ı da silinir.
+Bu esnada Animal class'ını parent olarak kabul eden 2 nesne oluşturunca (Cat ve Whale) artık
+bunlar Animal class'ının child'i haline geldi ve bunlar da Animal class'ı silinince otomatik
+olarak silindi.
+
+- Liste Oluşturma/Silme
+Bir liste içerisindeki tüm nesneleri silmek için de yine kullanabileceğimiz bir arayüz var.
+Proje içerisinde öncelikle bir liste oluşturduk, sonrasında bunu sildik. Yine project_001 
+içerisinde bu kullanımları görebiliriz.
+qDeleteAll(list)	: Bunun ile birlikte liste içerisindeki nesneler silinir
+list.clear()		: Bunun ile birlikte liste içerisindeki elemanlar silinir ve boyutu 				sıfıra eşitler. Bu sayede Exception oluşturmayacağı garanti edilir
+
+- Smart Pointers
+Smart Pointers
+As we’ve known unconsciously not deallocating a pointer causes a memory leak that may lead to a crash of the program. Languages Java, C# has Garbage Collection Mechanisms to smartly deallocate unused memory to be used again. The programmer doesn’t have to worry about any memory leaks. C++ comes up with its own mechanism that’s Smart Pointer. When the object is destroyed it frees the memory as well. So, we don’t need to delete it as Smart Pointer will handle it.
+
+QScopedPointer
+Oluşturulduğu Scope içinde kullanılan, scope dışına çıkıldığında silinen pointer çeşididir.
+
+QSharedPoiner
+Class'lar arası referans verilebilen, ana program bitmeden silinmeyen pointer çeşididir.
+---------------
