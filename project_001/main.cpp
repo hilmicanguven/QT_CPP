@@ -111,13 +111,13 @@ int main(int argc, char *argv[])
 
 //    qInfo() << "Animal List Created...";
 
-    AnimalList list = getAnimalList(5);
-    displayAnimalList(list);
-    //qDeleteAll(list); //delete entire list
-    qDeleteAll(list.begin(), list.end()); //delete entire list
-    list.clear();//delete list, otherwise program will crashed brcause of bad pointer
-    displayAnimalList(list);
-    qInfo() << "Animal List Deleted ...\n\n";
+    // AnimalList list = getAnimalList(5);
+    // displayAnimalList(list);
+    // //qDeleteAll(list); //delete entire list
+    // qDeleteAll(list.begin(), list.end()); //delete entire list
+    // list.clear();//delete list, otherwise program will crashed brcause of bad pointer
+    // displayAnimalList(list);
+    // qInfo() << "Animal List Deleted ...\n\n";
 
 //    qInfo() << "Scoped Pointers ...";
 //    AnimalScoped();
@@ -126,32 +126,32 @@ int main(int argc, char *argv[])
     // AnimalShared(new Animal());
 
 //------QString object creating-------
-    QString line("This is a string ");
-    qInfo() << line;
+    // QString line("This is a string ");
+    // qInfo() << line;
 
-    QString name = "Hilmi Guven";
-    qInfo() << name;
+    // QString name = "Hilmi Guven";
+    // qInfo() << name;
 
-    int progress = 100;
-    int total = 200;
-    QString bar = QString("Progress Bar: %1/%2").arg(progress).arg(total);
-    qInfo() << bar;
+    // int progress = 100;
+    // int total = 200;
+    // QString bar = QString("Progress Bar: %1/%2").arg(progress).arg(total);
+    // qInfo() << bar;
 //------QString object creating-------
 
 //------QString Reading Each Char-------
-    for(int i=0; i < name.length(); i++)
-    {
-        QChar character = name.at(i);
-        qInfo() << character;
-    }
+    // for(int i=0; i < name.length(); i++)
+    // {
+    //     QChar character = name.at(i);
+    //     qInfo() << character;
+    // }
 //------QString Reading Each Char-------
 
 //------Comparing & Searching-------
-    qInfo() << "Comparison Result" << name.compare("Name Surname", Qt::CaseSensitivity::CaseSensitive);
-    qInfo() << "is String start with ...?"  << name.startsWith("Hilmi", Qt::CaseSensitivity::CaseSensitive);
-    qInfo() << "is String end with ...?"  << name.endsWith("Guven", Qt::CaseSensitivity::CaseSensitive);
-    qInfo() << "is String contains ...?"  << name.contains("mi Gu");
-    qInfo() << "index of string ...?"  << name.indexOf("Guven");
+    // qInfo() << "Comparison R/*esult" << name.compare("Name Surname", Qt::CaseSensitivity::CaseSensitive);
+    // qInfo() << "is String start with ...?"  << name.startsWith("Hilmi", Qt::CaseSensitivity::CaseSensitive);
+    // qInfo() << "is String end with ...?"  << name.endsWith("Guven", Qt::CaseSensitivity::CaseSensitive);
+    // qInfo() << "is String contains ...?"  << name.contains("mi Gu");
+    // qInfo() << "index of string ...*/?"  << name.indexOf("Guven");
 //------Comparing & Searching-------
 
 //------Modify & Parsing-------
@@ -159,14 +159,48 @@ int main(int argc, char *argv[])
 //------Modify & Parsing-------
 
 //------Conversion------
-    std::cout << "std-> " << name.toStdString() << std::endl;
+    // std::cout << "std-> " << name.toStdString() << std::endl;
 
-    qInfo() << "UTF8 " << name.toUtf8();
-    qInfo() << "Base64 " << name.toUtf8().toBase64();
-    qInfo() << "Hex " << name.toUtf8().toHex();
+    // qInfo() << "UTF8 " << name.toUtf8();
+    // qInfo() << "Base64 " << name.toUtf8().toBase64();
+    // qInfo() << "Hex " << name.toUtf8().toHex();
+
+//-----QByte Array-----
+
+    QByteArray stuff;
+    qInfo() << stuff;   //Empty String
+
+    QByteArray data("Byte Array with Data");
+    qInfo() << data;
+
+    QByteArray buffer(10, '-');
+    qInfo() << buffer;
+
+    QByteArray person(QString("Hilmi").toLocal8Bit()); // we need to specific type
+    qInfo() << person;
+
+    //Sizing the array
+    data.reserve(25); //reserve memory for array in size of byte, i.e.25
+    data.resize(15); //resize the size of array
+    data.truncate(10);//it chops the array. if size is larger than truncate, it gets smaller
+    data.clear();//clear and make null
+
+    //modifying/reading/encoding the array
+    data.resize(10);
+    data.fill('a');
+
+    int first = data.indexOf('a');
+    int last = data.lastIndexOf('a');
+    int random = data.at(3);
+
+    foreach(auto item, data.split(' '))
+    {
+        //item
+    }
+
 
     int value = a.exec();
-    qInfo() << "Exit Code: " << value;
+    qInfo() << "Program end with Exit Code: " << value;
 
 /** @note QString is not QObject!!!
  *  We can not copy QObject during passing function as argument

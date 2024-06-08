@@ -34,4 +34,7 @@ Proje içerisinde çeşitli kullanım ve örnekleri mevcut. Buna ek olarak bir s
 
 QStringView: QString yapısı içinde bir fazla QChar içeren ve üzerinde değişiklik yapabileceğimiz şekilde bir yapısı vardı. QStringView ise string'i bir bütün halinde düşünüp
 üzerinde değişiklik yapılamıyor. Yani bir fonksiyona string değişkenimizi parametre olarak verdiğimizde (adresini) o fonksiyon içerisinde bu değişken artık değiştirilebilir! bu büyük bir problemdir. Bu nedenle fonksiyonun aldığı parameteryi QStringView olarak tanımlamak buna çözüm olabilir.
+
+QByteArray: QByteArray can be used to store both raw bytes (including '\0's) and traditional 8-bit '\0'-terminated strings. Using QByteArray is much more convenient than using const char *. Behind the scenes, it always ensures that the data is followed by a '\0' terminator, and uses implicit sharing (copy-on-write) to reduce memory usage and avoid needless copying of data.
+
 ----------project_001 ----------
