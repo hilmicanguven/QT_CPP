@@ -19,10 +19,15 @@ Animal::~Animal()
         qInfo() << this << "Child: " << child << "Deconstructued";
     }
 
-    qInfo() << this << "De-Constructed" << parent();
+    //qInfo() << this << "De-Constructed" << parent();
 }
 
 void Animal::message(QString value)
 {
     qInfo() << this << value;
+}
+
+void Animal::setAge(int age)
+{
+    this->age = age;
 }

@@ -11,8 +11,10 @@ class Animal : public QObject
 public:
     explicit Animal(QObject *parent = nullptr);
     ~Animal(); // Deconstructor
+    int age;
 
     void message(QString value = ""); //
+    void setAge(int age);
 
 signals:
 };

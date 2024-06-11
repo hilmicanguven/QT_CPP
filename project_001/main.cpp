@@ -10,6 +10,70 @@
 
 #include <iostream>
 
+// Creating a type definition for QMap //
+typedef QMap<QString, QSharedPointer<Animal>> AnimalQMap;
+
+AnimalQMap getAnimalQMap()
+{
+    AnimalQMap animals;
+
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        QSharedPointer<Animal> ptr (new Animal());
+        ptr->setAge(i);
+        animals.insert("Animal_" + QString::number(i), ptr);
+    }
+
+    return animals;
+}
+
+//displaying each key-value şn a Qmap list
+void displayAnimalQMap(AnimalQMap &Animals)
+{
+    foreach (QString key, Animals.keys())
+    {
+        QSharedPointer<Animal> ptr = Animals.value(key);
+        qInfo() << "-Key:" << key << "-Age: "<< ptr->age <<  "-Value: " << ptr.data();
+    }
+}
+
+//modifying value of a key in QMap
+void modifyAnimalQMap(AnimalQMap &Animals, QString key)
+{
+    if(Animals.contains(key))
+    {
+        Animals[key]->setAge(99);
+    }
+}
+
+//adding and inserting an item
+void addAnimalToQMap(AnimalQMap &Animals)
+{
+    QSharedPointer<Animal> ptr (new Animal());
+    ptr->setAge(98);
+    Animals.insert("Test", ptr);
+    // Animals["Test"] = ptr;
+}
+
+//searching an item
+void findAnimalFromQMap(AnimalQMap &Animals, QString key)
+{
+    qInfo() << "Exist or not " << Animals.contains(key);
+}
+
+void removeItemFromQMap(AnimalQMap &Animals, QString key)
+{
+    if(!Animals.contains(key))
+    {
+        qWarning() << "Given key is not found ";
+        return;
+    }
+
+    Animals.remove(key);
+}
+
+
+
 //Setting in the constuctor
 Animal* getAnimal(QObject* parent)
 {
@@ -167,37 +231,58 @@ int main(int argc, char *argv[])
 
 //-----QByte Array-----
 
-    QByteArray stuff;
-    qInfo() << stuff;   //Empty String
+    // QByteArray stuff;
+    // qInfo() << stuff;   //Empty String
 
-    QByteArray data("Byte Array with Data");
-    qInfo() << data;
+    // QByteArray data("Byte Array with Data");
+    // qInfo() << data;
 
-    QByteArray buffer(10, '-');
-    qInfo() << buffer;
+    // QByteArray buffer(10, '-');
+    // qInfo() << buffer;
 
-    QByteArray person(QString("Hilmi").toLocal8Bit()); // we need to specific type
-    qInfo() << person;
+    // QByteArray person(QString("Hilmi").toLocal8Bit()); // we need to specific type
+    // qInfo() << person;
 
-    //Sizing the array
-    data.reserve(25); //reserve memory for array in size of byte, i.e.25
-    data.resize(15); //resize the size of array
-    data.truncate(10);//it chops the array. if size is larger than truncate, it gets smaller
-    data.clear();//clear and make null
+    // //Sizing the array
+    // data.reserve(25); //reserve memory for array in size of byte, i.e.25
+    // data.resize(15); //resize the size of array
+    // data.truncate(10);//it chops the array. if size is larger than truncate, it gets smaller
+    // data.clear();//clear and make null
 
-    //modifying/reading/encoding the array
-    data.resize(10);
-    data.fill('a');
+    // //modifying/reading/encoding the array
+    // data.resize(10);
+    // data.fill('a');
 
-    int first = data.indexOf('a');
-    int last = data.lastIndexOf('a');
-    int random = data.at(3);
+    // int first = data.indexOf('a');
+    // int last = data.lastIndexOf('a');
+    // int random = data.at(3);
 
-    foreach(auto item, data.split(' '))
-    {
-        //item
-    }
+    // foreach(auto item, data.split(' '))
+    // {
+    //     //item
+    // }
 
+    //-------QMAP--------------------------
+    // QMap<QString, int> identity;
+    // identity.insert("Hilmi", 000001);
+    // qInfo() << identity;
+
+    AnimalQMap animals = getAnimalQMap();
+    // qInfo() << animals;
+    displayAnimalQMap(animals);
+
+    modifyAnimalQMap(animals, "Animal_0");
+    displayAnimalQMap(animals);
+    addAnimalToQMap(animals);
+    displayAnimalQMap(animals);
+    findAnimalFromQMap(animals, "Test");
+    removeItemFromQMap(animals, "Test");
+    findAnimalFromQMap(animals, "Test");
+    animals.clear();
+
+
+
+    //-------QMAP--------------------------
 
     int value = a.exec();
     qInfo() << "Program end with Exit Code: " << value;

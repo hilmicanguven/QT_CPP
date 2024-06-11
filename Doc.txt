@@ -37,4 +37,9 @@ QStringView: QString yapısı içinde bir fazla QChar içeren ve üzerinde deği
 
 QByteArray: QByteArray can be used to store both raw bytes (including '\0's) and traditional 8-bit '\0'-terminated strings. Using QByteArray is much more convenient than using const char *. Behind the scenes, it always ensures that the data is followed by a '\0' terminator, and uses implicit sharing (copy-on-write) to reduce memory usage and avoid needless copying of data.
 
+QMap: Key-Value ikilisi prensibi ile oluşturulan veri yapısıdır. Bir "value" ya erişirken
+alışılagelmiş index yerine "key" kullanılır. Nasıl eklenir/değişiklik yapılır kodları ekledik. Burada birkaç madde var dikkat edilebilecek:
+	- QMap'i bir typedef ile tanımlamak kullanışlı/okunabilir olur
+	- QSharedPointer tipi kullanılarak Class yapıları parametre olarak verilebilir.
+
 ----------project_001 ----------
