@@ -1,0 +1,9 @@
+# ninja log v5
+1	839	7410455211270815	LibraryInventoryTracker_autogen/timestamp	95ba9bb20ea867d3
+1	839	7410455211270815	LibraryInventoryTracker_autogen/mocs_compilation.cpp	95ba9bb20ea867d3
+1	839	7410455211270815	D:/QT_CPP/LibraryInventoryTracker/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/LibraryInventoryTracker_autogen/timestamp	95ba9bb20ea867d3
+1	839	7410455211270815	D:/QT_CPP/LibraryInventoryTracker/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/LibraryInventoryTracker_autogen/mocs_compilation.cpp	95ba9bb20ea867d3
+840	3637	7410455239824144	CMakeFiles/LibraryInventoryTracker.dir/LibraryInventoryTracker_autogen/mocs_compilation.cpp.obj	9c467b98961bb033
+843	3777	7410455241220426	CMakeFiles/LibraryInventoryTracker.dir/main.cpp.obj	77df9486d37db975
+846	4216	7410455245603764	CMakeFiles/LibraryInventoryTracker.dir/libraryinventory.cpp.obj	f92820a52596b90
+4216	4578	7410455249179776	LibraryInventoryTracker.exe	90a28b9d3ff6fb3b
